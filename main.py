@@ -1,5 +1,6 @@
 import pygame
 import sys
+import gif_pygame
 from bullets import Shot
 from constants import *
 from player import Player
@@ -26,13 +27,14 @@ def main():
     player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
     asteroid_field = AsteroidField()
 
+    background = gif_pygame.load("starbg.gif")
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return    
     
-        screen.fill("black")
+        background.render(screen, (0, 0))
         
         for updateables in updateable:
             updateables.update(dt)
